@@ -1,0 +1,15 @@
+.side
+  .side__head
+    .side__head__users
+      - if user_signed_in?
+        = current_user.nickname
+      - else
+  - if user_signed_in?
+    .user__postbtn
+      = link_to new_post_path do
+        新規投稿
+        <i class="fas fa-book"></i>
+  - else
+  .userPreviousPost
+    最近の投稿
+

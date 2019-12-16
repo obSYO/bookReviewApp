@@ -1,0 +1,40 @@
+.main{
+  top: 80px;
+  width: calc(100vw - 250px);
+  height: calc(100vh - 80px);
+  background-color: blue;
+  position: fixed;
+  right: 0;
+  display: inline-block;
+  background-image: url("ELL75_yousyohondana20120620_TP_V.jpg");
+  box-sizing: border-box;
+  overflow: auto;
+  .content{
+    background-color: burlywood;
+    width: 75vw;
+    height: 240px;
+    margin: 20px;
+    margin-right: 40px;
+    display: flex;
+    position: relative;
+    &__topImage{
+      background-color: white;
+      width: 157px;
+      height: 222px;
+      margin: 9px;
+    }
+    &__title{
+      margin: 5px;
+      height: 18px;
+      line-height: 18px;
+      font-size: 18px;
+    }
+    &__review{
+      margin: 5px;
+      font-size: 15px;
+      display: flex;
+      word-wrap: normal;
+      width: 60vw;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.contets_title
+  新しい本を登録する
+
+= form_with model: @book, class: :form, local: true do |form|
+  = form.text_field :booktitle, placeholder: :タイトル, class: :form__title
+  = form.text_area :author, placeholder: :著者名, class: :form__author
+  = form.text_area :bookimage, placeholder: :書影URL, class: :form__image
+  = form.submit '投稿', class: :form__btn

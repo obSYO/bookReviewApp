@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_123941) do
+ActiveRecord::Schema.define(version: 2019_12_15_121522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "places", force: :cascade do |t|
-    t.string "place_tag"
-    t.text "content"
+  create_table "books", force: :cascade do |t|
+    t.text "booktitle"
+    t.text "author"
+    t.text "bookimage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "nickname"
-    t.string "title"
+    t.text "title"
     t.text "reviewText"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

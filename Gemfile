@@ -68,3 +68,7 @@ gem 'devise'
 
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'dotenv-rails'
+gem 'jquery-rails'
+gem 'geocoder'

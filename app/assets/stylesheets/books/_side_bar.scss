@@ -1,0 +1,37 @@
+.side{
+  width: 250px;
+  height: 100vh;
+  padding: 0 20px;
+  padding-top: 20px;
+  background-color: pink;
+  box-sizing: border-box;
+  float: left;
+  position: fixed;
+  top: 80px;
+  background-image: url("paper_00114.jpg");
+  a{
+    text-decoration: none;
+  }
+  &__head{
+    &__users{
+      font-size: 30px;
+      display: flex;
+    }
+  }
+  .user__postbtn{
+    padding: 10px;
+    font-size: 20px;
+    border: solid 2px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: fit-content;
+    a{
+      color: white;
+    }
+  }
+
+  .userPreviousPost{
+    font-size: 22px;
+    margin-top: 20px;
+  }
+}

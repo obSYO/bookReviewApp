@@ -1,0 +1,32 @@
+@import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "books/side_bar";
+@import "books/main_posts";
+
+.header{
+  height: 80px;
+  width: 100vw;
+  background-color: gray;
+  box-sizing: content-box;
+  display: flex;
+  padding:0 20px;
+  box-sizing: border-box;
+  a{
+    text-decoration: none;
+  }
+  &__title{
+    line-height: 80px;
+
+    &__text{
+      font-size: 50px;
+      color: black;
+    }
+  }
+  .header__right--btn{
+    padding:0 20px;
+    line-height: 80px;
+    color: white;
+    right: 10px;
+  }
+}
