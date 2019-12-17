@@ -5,6 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-  has_many :book_users
-  has_many :books, through: :book_users
+  has_many :books
 end

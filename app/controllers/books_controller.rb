@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 
   def index
-    render "books/index"
     @books = Book.all
     @posts = Post.all
   end
@@ -11,8 +10,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(book_params)
+    @book = Book.create(book_params)
     redirect_to root_path
+  end
+
+  def show
+    @post = Post.new
+    @posts = @book.posts.includes(:user)
   end
 
   private

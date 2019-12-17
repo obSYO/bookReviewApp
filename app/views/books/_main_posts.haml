@@ -1,9 +1,9 @@
 .main
   .content
-    -# -@books.each do |book|
+  - @books.each do |book|
     .content__topImage
-      -# = book.bookimage
+      = book.bookimage
     .content__title
-      -# - simple_format(post.title)
+      = book.booktitle
     .content__review
-      -# = post.reviewText
+      = book.author
