@@ -1,7 +1,7 @@
 .reviewAuthor
   = @post.name
 .reviewPostEdit
-  = link_to "編集", 
+  = link_to "編集", edit_book_path(@post.id)
 .reviewTitle
   = @post.title
 .reviewText
