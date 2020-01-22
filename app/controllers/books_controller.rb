@@ -15,10 +15,13 @@ class BooksController < ApplicationController
   end
 
   def show
-    @post = Post.new
-    @posts = @book.posts.includes(:user)
+    @post = Post.find(params[:id])
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+  
   private
   def book_params
     params.require(:book).permit(:booktitle, :author, :bookimage)

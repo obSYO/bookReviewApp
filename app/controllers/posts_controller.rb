@@ -3,9 +3,17 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def index
+    @posts = Post.all
+  end
+
   def create
-    post = Post.create(post_params)
+    @post = Post.create(post_params)
     redirect_to "/books/#{post.book.id}"
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   private
