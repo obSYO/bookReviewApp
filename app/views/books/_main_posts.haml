@@ -6,4 +6,5 @@
     .content__title
       = book.booktitle
     .content__review
-      = book.author
+    - @posts.each do |post|
+      = post.reviewText
