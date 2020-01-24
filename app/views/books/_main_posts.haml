@@ -2,7 +2,7 @@
   .content
   - @books.each do |book|
     .content__topImage
-      = book.bookimage
+      = link_to book.bookimage, book_path(book.id)
     .content__title
       = book.booktitle
     .content__review
