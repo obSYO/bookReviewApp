@@ -1,9 +1,8 @@
 class BooksController < ApplicationController
 
   def index
-    render "books/index"
     @books = Book.all
-    @posts = Post.all
+    @reviews = Review.all
   end
 
   def new
@@ -11,13 +10,37 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(book_params)
+    @book = Book.create(book_params)
+    if @book.save
+      redirect_to root_path
+    else
+      redirect_to  new_book_path
+    end
+  end
+  
+  def show
+    @review = Review.find(params[:id])
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book_path(book.id)
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
     redirect_to root_path
   end
 
   private
   def book_params
-    params.require(:book).permit(:booktitle, :author, :bookimage)
+    params.require(:book).permit(:booktitle, :author, :bookimage).merge(user_id: current_user.id)
   end
 
 end

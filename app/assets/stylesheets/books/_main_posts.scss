@@ -22,6 +22,7 @@
       width: 157px;
       height: 222px;
       margin: 9px;
+      object-fit: cover;
     }
     &__title{
       margin: 5px;
@@ -31,7 +32,7 @@
     }
     &__review{
       margin: 5px;
-      font-size: 15px;
+      font-size: 20px;
       display: flex;
       word-wrap: normal;
       width: 60vw;

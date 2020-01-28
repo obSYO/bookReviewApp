@@ -2,12 +2,12 @@
   .side__head
     .side__head__users
       - if user_signed_in?
-        = current_user.nickname
+        = link_to "#{current_user.nickname}", "/users/#{current_user.id}"
       - else
   - if user_signed_in?
-    .user__postbtn
-      = link_to new_post_path do
-        新規投稿
+    .user__bookpost
+      = link_to new_book_path do
+        本を登録する
         <i class="fas fa-book"></i>
   - else
   .userPreviousPost
