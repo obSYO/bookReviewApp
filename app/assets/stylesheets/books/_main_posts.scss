@@ -12,23 +12,25 @@
   .content{
     background-color: burlywood;
     width: 75vw;
-    height: 240px;
+    height: fit-content;
     margin: 20px;
     margin-right: 40px;
     display: flex;
-    position: relative;
-    &__topImage{
-      background-color: white;
-      width: 157px;
-      height: 222px;
-      margin: 9px;
-      object-fit: cover;
-    }
-    &__title{
-      margin: 5px;
-      height: 18px;
-      line-height: 18px;
-      font-size: 18px;
+    &__book{
+      text-align: center;
+      &__topImage{
+        background-color: white;
+        width: 157px;
+        height: 222px;
+        margin: 9px;
+        object-fit: cover;
+      }
+      &__title{
+        margin: 5px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 18px;
+      }
     }
     &__review{
       margin: 5px;
