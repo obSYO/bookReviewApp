@@ -1,9 +1,7 @@
 .reviewAuthor
-  = @post.name
+  = @book.booktitle
 .reviewPostEdit
   = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
   = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
 .reviewTitle
-  = @post.title
-.reviewText
-  = simple_format @post.reviewText
+  = @book.author
