@@ -3,7 +3,7 @@
     .content
       .content__book
         .content__book__topImage
-          = link_to book.bookimage.url, book_path(book.id)
+          = image_tag book.bookimage.url, size:'157x222'
         .content__book__title
           = book.booktitle
       .content__review
