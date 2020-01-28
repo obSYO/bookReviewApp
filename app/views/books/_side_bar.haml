@@ -2,7 +2,7 @@
   .side__head
     .side__head__users
       - if user_signed_in?
-        = current_user.nickname
+        = link_to "#{current_user.nickname}", "/users/#{current_user.id}"
       - else
   - if user_signed_in?
     .user__bookpost
