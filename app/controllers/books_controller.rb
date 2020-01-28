@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @posts = Post.all
+    @reviews = Review.all
   end
 
   def new
@@ -19,7 +19,7 @@ class BooksController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def edit
