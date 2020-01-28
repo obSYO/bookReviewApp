@@ -3,7 +3,7 @@
     .content
       .content__book
         .content__book__topImage
-          = link_to book.bookimage, book_path(book.id)
+          = link_to book.bookimage.url, book_path(book.id)
         .content__book__title
           = book.booktitle
       .content__review
