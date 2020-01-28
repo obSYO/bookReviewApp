@@ -1,10 +1,11 @@
 .main
   - @books.each do |book|
     .content
-      .content__topImage
-        = link_to book.bookimage, book_path(book.id)
-      .content__title
-        = book.booktitle
+      .content__book
+        .content__book__topImage
+          = link_to book.bookimage, book_path(book.id)
+        .content__book__title
+          = book.booktitle
       .content__review
       - @reviews.each do |review|
         = review.title
