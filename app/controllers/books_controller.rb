@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
-    @reviews = Review.all
+    @books = Book.all.order("created_at DESC").page(params[:page]).per(3)
+    @reviews = Review.all.order("created_at DESC")
   end
 
   def new
     @book = Book.new
+    render  :_new
   end
 
   def create
@@ -14,12 +15,14 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to root_path
     else
-      redirect_to  new_book_path
+      redirect_to new_book_path
     end
   end
   
   def show
     @book = Book.find(params[:id])
+    @review = Review.new
+    @reviews = @book.reviews.includes(:user)
   end
 
   def edit

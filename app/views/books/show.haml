@@ -1,7 +1,21 @@
-.reviewAuthor
+.bookimage
+  = image_tag @book.bookimage.url, size:'157x222'
+.booktitle
   = @book.booktitle
 .reviewPostEdit
   = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
   = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
-.reviewTitle
+.bookauthor
   = @book.author
+
+= render partial: 'reviews/new', locals: { book: @book }
+
+.reviews
+- if @reviews
+  - @reviews.each do |review|
+    %p
+      %strong
+        = link_to review.user.nickname, "/users/#{review.user_id}"
+        ：
+      = review.title
+      = review.reviewText

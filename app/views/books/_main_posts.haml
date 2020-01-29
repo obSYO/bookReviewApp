@@ -8,5 +8,6 @@
         .content__book__title
           = link_to "#{book.booktitle}", "/books/#{book.id}"
       .content__review
-      - @reviews.each do |review|
+      - @reviews.find(book.id).each do |review|
         = review.title
+  = paginate(@books)
