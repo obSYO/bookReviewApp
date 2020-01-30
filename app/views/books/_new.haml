@@ -1,5 +1,12 @@
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
 .contets_title
-  新しい本を登録する
+  = "新しい本を登録する" if @book.booktitle.blank?
 
 = form_with model: @book, class: :form, local: true do |form|
   = form.text_field :booktitle, placeholder: :タイトル, class: :form__title

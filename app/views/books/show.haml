@@ -1,9 +1,32 @@
-.reviewAuthor
-  = @post.name
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
+.bookimage
+  = "画像はありません" if @book.bookimage.blank? 
+  = image_tag @book.bookimage.url, size:'157x222' if @book.bookimage.present?
+.booktitle
+  = @book.booktitle
 .reviewPostEdit
   = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
   = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
-.reviewTitle
-  = @post.title
-.reviewText
-  = simple_format @post.reviewText
+.bookauthor
+  = @book.author
+
+= render partial: 'reviews/new', locals: { book: @book }
+
+.reviews
+- if @reviews
+  - @reviews.each do |review|
+    %p
+      %strong
+        = link_to review.user.nickname, "/users/#{review.user_id}"
+        ：
+      = review.title
+      .reviewPostEdit
+        = link_to "編集",  edit_book_review_path(@book.id), class: "reviewPostEdit__edit"
+        = link_to "削除", book_review_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
+      = review.reviewText
