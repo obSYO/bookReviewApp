@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     if @review.user_id == current_user.id
-      @review = Review.find(params[:id])
     else
       redirect_to "/books/#{@review.book_id}"
     end
@@ -38,7 +37,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
+    review = Review.find(params[review.id])
     if review.user_id == current_user.id
       review.destroy
       redirect_to root_path

@@ -27,6 +27,6 @@
         ：
       = review.title
       .reviewPostEdit
-        = link_to "編集",  edit_book_review_path(@book.id), class: "reviewPostEdit__edit"
-        = link_to "削除", book_review_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
+        = link_to "編集",  edit_book_review_path(review.id), class: "reviewPostEdit__edit"
+        = link_to "削除", book_review_path(review.id), method: :delete, class: "reviewPostEdit__delete"
       = review.reviewText

@@ -1,7 +1,6 @@
 .contetns_title
   感想を編集する
-
-= form_with model: @review, class: :form, local: true do |form|
-  = form.text_field :title, placeholder: :タイトル, class: :form__title
-  = form.text_area :reviewText, placeholder: :感想本文, class: :form__text
-  = form.submit '投稿', class: :form__btn
+= form_for @review do |f|
+  = f.text_field :title, placeholder: :タイトル, class: :form__title
+  = f.text_area :reviewText, placeholder: :感想本文, class: :form__text
+  = f.submit '投稿', class: :form__btn
