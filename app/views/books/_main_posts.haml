@@ -8,6 +8,13 @@
         .content__book__title
           = link_to "#{book.booktitle}", "/books/#{book.id}"
       .content__review
-      - @reviews.find(book.id).each do |review|
-        = review.title
+        - if @reviews.where(book_id:book.id).present?
+          - @reviews.where(book_id:book.id).each do |review|
+            %p
+              %strong
+                = link_to review.user.nickname, "/users/#{review.user_id}"
+                ：
+              = review.title
+        - else
+          = "レビューはまだありません"
   = paginate(@books)

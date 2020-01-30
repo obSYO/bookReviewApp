@@ -2,7 +2,8 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.order("created_at DESC").page(params[:page]).per(3)
-    @reviews = Review.all.order("created_at DESC")
+    @review = Review.all
+    @reviews = @review.includes(:book)
   end
 
   def new
@@ -22,7 +23,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @review = Review.new
-    @reviews = @book.reviews.includes(:user)
+    @reviews = @book.reviews.includes(:book)
   end
 
   def edit

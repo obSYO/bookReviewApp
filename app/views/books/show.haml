@@ -1,5 +1,6 @@
 .bookimage
-  = image_tag @book.bookimage.url, size:'157x222'
+  = "画像はありません" if @book.bookimage.blank? 
+  = image_tag @book.bookimage.url, size:'157x222' if @book.bookimage.present?
 .booktitle
   = @book.booktitle
 .reviewPostEdit
