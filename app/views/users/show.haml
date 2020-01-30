@@ -1,6 +1,28 @@
 .user
   .user__page
-    = current_user.nickname
-    .user__page__title
-  .user__review
-    .user__review__text
+    = @user.nickname
+    さんのページ
+    .user__page__books
+      = @user.nickname
+      さんの登録した本
+    - @user_books.each do |book|
+      .user__page__books__image
+        = "画像はありません" if book.bookimage.blank? 
+        = image_tag book.bookimage.url, size:'157x222' if book.bookimage.present?
+      .user__page__books__title
+        = link_to "#{book.booktitle}", "/books/#{book.id}"
+    .user__page__reviewsTitle
+      = "#{@user.nickname}さんの投稿したレビュー一覧"
+    .user__page__reviews
+      - if @reviews.where(user_id:@user.id).present?
+        - @reviews.where(user_id:@user.id).each do |review|
+          %p
+            .user__page__reviews__bookTitle
+              = link_to "#{review.book.booktitle}", "/books/#{review.book_id}"
+            .user__page__reviews__reviewTitle
+              = review.title
+            .user__page__reviews__reviewText
+              = review.reviewText
+      - else
+        = "投稿したレビューはまだありません"
+      .user__page__review__text

@@ -12,4 +12,10 @@
   - else
   .userPreviousPost
     最近の投稿
+    - if @user_reviews.present?
+      - @user_reviews.each do |review|
+        %p
+          .user__page__reviews__bookTitle
+            = link_to "#{review.title}", "/books/#{review.book_id}"
+
 
