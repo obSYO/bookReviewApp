@@ -83,3 +83,5 @@ production:
   database: bookReviewApp_production
   username: bookReviewApp
   password: <%= ENV['BOOKREVIEWAPP_DATABASE_PASSWORD'] %>
+  master_key: <%= ENV['RAILS_MASTER_KEY'] %> 
+  
