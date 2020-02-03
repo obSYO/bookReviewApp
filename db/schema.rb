@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_055222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.index ["author"], name: "index_books_on_author"
+    t.index ["booktitle"], name: "index_books_on_booktitle"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
