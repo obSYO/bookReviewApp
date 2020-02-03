@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    @review = Review.new
   end
 
   def index
@@ -20,26 +19,28 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    if @review.user_id == current_user.id
-    else
-      redirect_to "/books/#{@review.book_id}"
-    end
+    # if @review.user_id == current_user.id
+    #   @review = Review.find(params[:id])
+    # else
+    #   redirect_to "/books/#{@review.book_id}"
+    # end
   end
 
   def update
-    review = Review.find(params[:id])
-    review.update(post_params)
-    if review.save
-      redirect_to  new_book_review_path(review.id)
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    if @review.save
+      redirect_to root_path
     else
-      redirect_to action: 'update'
+      redirect_to action: 'edit'
     end
   end
 
   def destroy
-    review = Review.find(params[review.id])
-    if review.user_id == current_user.id
-      review.destroy
+    binding.pry
+    @review = Review.find(params[:id])
+    if @review.user_id == current_user.id
+      @review.destroy
       redirect_to root_path
     else
       redirect_to "/books/#{review.book_id}"

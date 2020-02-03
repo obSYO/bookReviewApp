@@ -16,7 +16,7 @@
 .bookauthor
   = @book.author
 
-= render partial: 'reviews/new', locals: { book: @book }
+= render partial: 'reviews/new'
 
 .reviews
 - if @reviews
@@ -27,6 +27,6 @@
         ：
       = review.title
       .reviewPostEdit
-        = link_to "編集",  edit_book_review_path(review.id), class: "reviewPostEdit__edit"
-        = link_to "削除", book_review_path(review.id), method: :delete, class: "reviewPostEdit__delete"
+        = link_to "編集", "/books/#{@book.id}/reviews/#{review.id}/edit", class: "reviewPostEdit__edit"
+        = link_to "削除", "/books/#{@book.id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
       = review.reviewText
