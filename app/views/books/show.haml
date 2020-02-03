@@ -11,8 +11,11 @@
 .booktitle
   = @book.booktitle
 .reviewPostEdit
-  = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
-  = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
+- if user_signed_in?
+  - if @book.user_id == current_user.id
+    = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
+    = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
+  - else
 .bookauthor
   = @book.author
 
@@ -27,6 +30,8 @@
         ：
       = review.title
       .reviewPostEdit
-        = link_to "編集", "/books/#{@book.id}/reviews/#{review.id}/edit", class: "reviewPostEdit__edit"
-        = link_to "削除", "/books/#{@book.id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
+      - if user_signed_in?
+        - if review.user_id == current_user.id
+          = link_to "削除", "/books/#{@book.id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
+        - else
       = review.reviewText

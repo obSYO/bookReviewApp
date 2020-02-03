@@ -18,16 +18,11 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
-    # if @review.user_id == current_user.id
-    #   @review = Review.find(params[:id])
-    # else
-    #   redirect_to "/books/#{@review.book_id}"
-    # end
+    @review = Review.find_by(id: params[:id])
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id])
     @review.update(review_params)
     if @review.save
       redirect_to root_path
@@ -37,7 +32,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @review = Review.find(params[:id])
     if @review.user_id == current_user.id
       @review.destroy
@@ -51,6 +45,10 @@ class ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:title, :reviewText).merge(user_id: current_user.id, book_id: params[:book_id])
+  end
+
+  def book_params
+    params.require(:book).permit(:booktitle, :author, :bookimage).merge(user_id: current_user.id)
   end
 
 end

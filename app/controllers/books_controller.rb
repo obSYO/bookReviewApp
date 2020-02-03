@@ -57,11 +57,11 @@ class BooksController < ApplicationController
     end
   end
 
+  private
+
   def book_params
     params.require(:book).permit(:booktitle, :author, :bookimage).merge(user_id: current_user.id)
   end
-
-  private
 
 
 end

@@ -1,10 +1,15 @@
 .contetns_title
   感想を編集する
-= form_with model:@review[params], url: {controller: 'review', action: 'update'}, class: :form, local: true do |form|
+= form_with model:@review[params], class: :form, local: true do |form|
   = form.text_field :title, placeholder: :タイトル, class: :form__title, value: "#{@review.title}"
   = form.text_area :reviewText, placeholder: :感想本文, class: :form__text, value: "#{@review.reviewText}"
-  = form.submit '投稿', class: :form__btn, method: :patch
+  = form.submit '投稿'
 
 -# = render partial: 'new', locals: { review: @review }
 -# , url: {controller: 'review', action: 'update'}
--# , patch: "/books/#{@review.book_id}/reviews/#{@review.id}", to: 'reviews#edit'
+-# , patch: "/books/#{@review.book_id}/reviews/#{@review.id}", to: 'reviews#edit' "/books/#{@book.id}/reviews/#{review.id}/edit"
+
+-# = form_with model:@review[params], class: :form, local: true do |form|
+-#   = form.text_field :title, placeholder: :タイトル, class: :form__title, value: "#{@review.title}"
+-#   = form.text_area :reviewText, placeholder: :感想本文, class: :form__text, value: "#{@review.reviewText}"
+-#   = form.submit '投稿', url: {controller: 'review', action: 'update', class: :form__btn}
