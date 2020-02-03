@@ -2,21 +2,24 @@
   .user__page
     = @user.nickname
     さんのページ
+    .user__page__bookLabel
+      = "#{@user.nickname}さんの登録した本"
     .user__page__books
-      = @user.nickname
-      さんの登録した本
-    - @user_books.each do |book|
-      .user__page__books__image
-        = "画像はありません" if book.bookimage.blank? 
-        = image_tag book.bookimage.url, size:'157x222' if book.bookimage.present?
-      .user__page__books__title
-        = link_to "#{book.booktitle}", "/books/#{book.id}"
-      .reviewPostEdit
-      - if user_signed_in?
-        - if book.user_id == current_user.id
-          = link_to "編集", edit_book_path(book.id), class: "reviewPostEdit__edit"
-          = link_to "削除", book_path(book.id), method: :delete, class: "reviewPostEdit__delete"
-        - else
+    - if @user_books.present?
+      - @user_books.each do |book|
+        .user__page__books__image
+          = "画像はありません" if book.bookimage.blank? 
+          = image_tag book.bookimage.url, size:'157x222' if book.bookimage.present?
+        .user__page__books__title
+          = link_to "#{book.booktitle}", "/books/#{book.id}"
+        .reviewPostEdit
+        - if user_signed_in?
+          - if book.user_id == current_user.id
+            = link_to "編集", edit_book_path(book.id), class: "reviewPostEdit__edit"
+            = link_to "削除", book_path(book.id), method: :delete, class: "reviewPostEdit__delete"
+          - else
+    - else
+      = "登録した本はまだありません"
     .user__page__reviewsTitle
       = "#{@user.nickname}さんの投稿したレビュー一覧"
     .user__page__reviews
