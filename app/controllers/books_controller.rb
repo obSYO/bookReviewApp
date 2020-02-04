@@ -58,7 +58,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @search_books = Book.search(params[:keyword])
+    @search_books = Book.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(3)
     @reviews = Review.all
     @search_reviews = @reviews.search(params[:keyword])
     @books = Book.all.order("created_at DESC").page(params[:page]).per(3)

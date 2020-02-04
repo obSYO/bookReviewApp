@@ -1,3 +1,4 @@
 .contents.row
   - @search_books.each do |book|
-    = render partial: "main_posts", locals: { book: @books }
+    = render partial: "books", locals: { book: book }
+  = paginate(@search_books)
