@@ -1,0 +1,49 @@
+.user{
+  width: 100vw;
+  overflow: auto;
+  &__page{
+    &__username{
+      font-size: 30px;
+    }
+    &__books{
+
+      &__image{
+        background-color: white;
+        width: 157px;
+        height: 222px;
+        margin: 9px;
+        object-fit: cover;
+        background-color: lightgray;
+      }
+      &__title{
+        margin: 5px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 18px;
+      }
+      .reviewPostEdit{}
+    }
+    &__bookLabel{
+      font-size: 20px;
+
+    }
+    &__reviewsTitle{
+      margin: 5px;
+      font-size: 20px;
+      display: flex;
+      word-wrap: normal;
+      width: 60vw;
+
+    }
+    &__reviews{}
+          %p{
+            .user__page__reviews__bookTitle{}
+            .user__page__reviews__reviewTitle{}
+              .user__page__reviews__delete{}
+            .user__page__reviews__reviewText{}
+          }
+      &__review__text{
+
+      }
+  }
+}
