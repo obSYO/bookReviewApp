@@ -1,20 +1,4 @@
 .main
   - @books.each do |book|
-    .content
-      .content__book
-        .content__book__topImage
-          = "画像はありません" if book.bookimage.blank? 
-          = image_tag book.bookimage.url, size:'157x222' if book.bookimage.present?
-        .content__book__title
-          = link_to "#{book.booktitle}", "/books/#{book.id}"
-      .content__review
-        - if @reviews.where(book_id:book.id).present?
-          - @reviews.where(book_id:book.id).each do |review|
-            %p
-              %strong
-                = link_to review.user.nickname, "/users/#{review.user_id}"
-                ：
-              = review.title
-        - else
-          = "レビューはまだありません"
+    = render partial: "books", locals: { book: book }
   = paginate(@books)

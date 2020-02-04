@@ -57,10 +57,25 @@ class BooksController < ApplicationController
     end
   end
 
+  def search
+    @search_books = Book.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(3)
+    if @search_books.present?
+      @reviews = Review.all
+      @search_reviews = @reviews.search(params[:keyword])
+    else
+      @nosuch_books = "一致する本は登録されていません"
+    end
+  end
+
+
   private
 
   def book_params
     params.require(:book).permit(:booktitle, :author, :bookimage).merge(user_id: current_user.id)
+  end
+
+  def review_params
+    params.require(:review).permit(:title, :reviewText).merge(user_id: current_user.id, book_id: params[:book_id])
   end
 
 

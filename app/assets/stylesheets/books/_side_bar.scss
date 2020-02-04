@@ -16,6 +16,12 @@
     &__users{
       font-size: 30px;
       display: flex;
+      a{
+        color: black;
+      }
+      a:hover{
+        color: red;
+      }
     }
   }
   .user__postbtn{
