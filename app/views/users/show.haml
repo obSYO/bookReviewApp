@@ -1,7 +1,8 @@
 .user
   .user__page
-    = @user.nickname
-    さんのページ
+    .user__page__username
+      = @user.nickname
+      さんのページ
     .user__page__bookLabel
       = "#{@user.nickname}さんの登録した本"
     .user__page__books
@@ -30,6 +31,10 @@
               = link_to "#{review.book.booktitle}", "/books/#{review.book_id}"
             .user__page__reviews__reviewTitle
               = review.title
+            - if review.user_id == current_user.id
+              .user__page__reviews__delete
+                = link_to "削除", "/books/#{review.book_id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
+            - else
             .user__page__reviews__reviewText
               = review.reviewText
       - else
