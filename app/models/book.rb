@@ -4,4 +4,9 @@ class Book < ApplicationRecord
   validates :booktitle, :author, presence: true
 
   mount_uploader :bookimage, ImageUploader
+
+  def self.search(search)
+    return Book.all unless search
+    Book.where('booktitle LIKE(?)', "%#{search}%")
+  end
 end

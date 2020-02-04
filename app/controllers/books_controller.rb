@@ -57,10 +57,22 @@ class BooksController < ApplicationController
     end
   end
 
+  def search
+    @search_books = Book.search(params[:keyword])
+    @reviews = Review.all
+    @search_reviews = @reviews.search(params[:keyword])
+    @books = Book.all.order("created_at DESC").page(params[:page]).per(3)
+  end
+
+
   private
 
   def book_params
     params.require(:book).permit(:booktitle, :author, :bookimage).merge(user_id: current_user.id)
+  end
+
+  def review_params
+    params.require(:review).permit(:title, :reviewText).merge(user_id: current_user.id, book_id: params[:book_id])
   end
 
 

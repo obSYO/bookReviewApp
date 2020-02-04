@@ -8,6 +8,11 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
+  def show
+    @review = Review.all
+    @reviews = @review.includes(:book)
+  end
+
   def create
     @review = Review.create(review_params)
     if @review.save
@@ -22,9 +27,9 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find_by(id: params[:id])
-    @review.update(review_params)
-    if @review.save
+    review = Review.find_by(id: params[:id])
+    review.update(review_params)
+    if review.save
       redirect_to root_path
     else
       redirect_to action: 'edit'

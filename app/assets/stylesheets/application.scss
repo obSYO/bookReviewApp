@@ -29,4 +29,14 @@
     color: white;
     right: 10px;
   }
+  .search-form{
+    width: 600px;
+    position: absolute;
+    right: 0;
+    display: flex;
+    .search-input{
+      width: 80%;
+      height: 50px;
+    }
+  }
 }
