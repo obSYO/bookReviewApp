@@ -65,6 +65,10 @@ class BooksController < ApplicationController
     else
       @nosuch_books = "一致する本は登録されていません"
     end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 
