@@ -1,0 +1,27 @@
+.side{
+  .contets_title{
+  }
+  .contents__form{
+    .form{
+      &__author{
+        display: block;
+        width: 100%;
+        height: 30px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      &__imageText{
+        font-size: 15px;
+        border: solid 1px;
+        border-radius: 5px;
+        width: 100%;
+        padding: 3px;
+      }
+      &__image{
+        display: none;
+      }
+    }
+  }
+}

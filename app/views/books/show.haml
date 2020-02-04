@@ -4,34 +4,37 @@
 - if flash[:alert]
   .alert.alert-danger
     = flash[:alert]
+.main
+  .content
+    .content__book
+      .content__book__topImage
+        = "画像はありません" if @book.bookimage.blank? 
+        = image_tag @book.bookimage.url, size:'157x222' if @book.bookimage.present?
+      .content__book__title
+        = @book.booktitle
+      .bookEdit
+      - if user_signed_in?
+        - if @book.user_id == current_user.id
+          = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
+          = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
+        - else
+      .bookauthor
+        著者：
+        = @book.author
+    .contents__review
+      - if @reviews
+        - @reviews.each do |review|
+          %p
+            = link_to review.user.nickname, "/users/#{review.user_id}"
+            ：
+            = review.title
+            %label.reviewPostEdit
+              - if user_signed_in?
+                - if review.user_id == current_user.id
+                  = link_to "削除", "/books/#{@book.id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
+                - else
+            .contents__review__text
+              = review.reviewText
 
-.bookimage
-  = "画像はありません" if @book.bookimage.blank? 
-  = image_tag @book.bookimage.url, size:'157x222' if @book.bookimage.present?
-.booktitle
-  = @book.booktitle
-.reviewPostEdit
-- if user_signed_in?
-  - if @book.user_id == current_user.id
-    = link_to "編集", edit_book_path(@book.id), class: "reviewPostEdit__edit"
-    = link_to "削除", book_path(@book.id), method: :delete, class: "reviewPostEdit__delete"
-  - else
-.bookauthor
-  = @book.author
 
 = render partial: 'reviews/new'
-
-.reviews
-- if @reviews
-  - @reviews.each do |review|
-    %p
-      %strong
-        = link_to review.user.nickname, "/users/#{review.user_id}"
-        ：
-      = review.title
-      .reviewPostEdit
-      - if user_signed_in?
-        - if review.user_id == current_user.id
-          = link_to "削除", "/books/#{@book.id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
-        - else
-      = review.reviewText

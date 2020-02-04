@@ -4,12 +4,15 @@
 - if flash[:alert]
   .alert.alert-danger
     = flash[:alert]
-
-.contets_title
-  = "新しい本を登録する" if @book.booktitle.blank?
-
-= form_with model: @book, class: :form, local: true do |form|
-  = form.text_field :booktitle, placeholder: :タイトル, class: :form__title
-  = form.text_field :author, placeholder: :著者名, class: :form__author
-  = form.file_field :bookimage, placeholder: :書影URL, class: :form__image
-  = form.submit '投稿', class: :form__btn
+.side
+  .contets_title
+    = "新しい本を登録する" if @book.booktitle.blank?
+  .contents__form
+    = form_with model: @book, class: :form, local: true do |form|
+      = form.text_field :booktitle, placeholder: :タイトル, class: :form__title
+      = form.text_field :author, placeholder: :著者名, class: :form__author
+      = form.label :bookimage, class: 'form__imageText' do
+        書影をアップロードする
+        = form.file_field :bookimage, class: :form__image
+      = form.submit '投稿', class: :form__btn
+.main
