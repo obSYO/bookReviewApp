@@ -12,6 +12,8 @@
   display: flex;
   padding:0 20px;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
   a{
     text-decoration: none;
   }
@@ -31,12 +33,20 @@
   }
   .search-form{
     width: 600px;
-    position: absolute;
-    right: 0;
     display: flex;
+    margin: 0 auto;
     .search-input{
-      width: 80%;
-      height: 50px;
+      width: 90%;
+      height: 40px;
+    }
+    .search-btn{
+      width: 10%;
+      border-radius:0 2px 2px 0;
+      background:#7fbfff;
+      border:none;
+      color:#fff;
+      font-size:16px;
+      
     }
   }
 }
