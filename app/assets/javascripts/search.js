@@ -1,26 +1,27 @@
 $(function() {
-  var search_list = $("main");
+  var search_list = $(".book");
 
   function appendBook(book) {
-    var html = `
-  <div class='content'>
-    <div class='content__book'>
-      <div class='content__book__topImage'>
-        "画像はありません" if ${book.bookimage}.blank?
-        image_tag ${book.bookimage.url}, size:'157x222' if ${book.bookimage}.present?
-      </div>
-      <div class='content__book__title'>
-        link_to "${book.booktitle}", "/books/${book.id}"
-      </div>
-    </div>
-  </div>
-                        `
+    var html = `<h1 class='search_preview'>検索プレビュー</h1>
+                  <div class='content'>
+                    <div class='content__book'>
+                      <div class='content__book__topImage'>
+                        <div 画像はありません if "${book.bookimage}".blank?  ></div>
+                        <img src="${book.bookimage.url}",width="157" height="222" alt="画像はありません"></image_tag>
+                      </div>
+                      <div class='content__book__title'>
+                        <a href="/books/${book.id}">
+                        ${book.booktitle}
+                        </a>
+                      </div>
+                    </div>
+                  </div>`
     search_list.append(html);
+    console.log(html)
    }
 
   function appendErrMsgToHTML(msg) {
     var html = `<div class='name'>${ msg }</div>`
-    search_list.append(html);
   }
 
 
