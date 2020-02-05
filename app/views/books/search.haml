@@ -1,10 +1,11 @@
 .wrapper
   = render partial: 'side_bar'
 .main
-  - if @search_books.present?
-    - @search_books.each do |book|
-      = render partial: "books", locals: { book: book }
-    = paginate(@search_books)
-  - else
+  .book
+    - if @search_books.present?
+      - @search_books.each do |book|
+        = render partial: "books", locals: { book: book }
+      = paginate(@search_books)
+    - else
     .nosuch_books
       = @nosuch_books

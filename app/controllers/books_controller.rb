@@ -63,7 +63,7 @@ class BooksController < ApplicationController
       @reviews = Review.all
       @search_reviews = @reviews.search(params[:keyword])
     else
-      @nosuch_books = "一致する本は登録されていません"
+      @nosuch_books = "#{params[:keyword]}に一致する本は登録されていません"
     end
     respond_to do |format|
       format.html
