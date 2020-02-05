@@ -7,7 +7,7 @@ $(function() {
                     <div class='content__book'>
                       <div class='content__book__topImage'>
                         <div 画像はありません if "${book.bookimage}".blank?  ></div>
-                        <img src="${book.bookimage.url}",width="157" height="222" alt="画像はありません"></image_tag>
+                        <img src="${book.bookimage.url}" width="157" height="222" alt="画像はありません"></image_tag>
                       </div>
                       <div class='content__book__title'>
                         <a href="/books/${book.id}">
