@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type", data: {"turbolinks" => false}}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title BookReviewApp
     = csrf_meta_tags
     = csp_meta_tag
@@ -11,7 +11,7 @@
   %body
     .header
       .header__title
-        = link_to "BookReview", root_path, class: "header__title__text"
+        = link_to "BookReview", root_path, data: {"turbolinks" => false}, class: "header__title__text"
       - if user_signed_in?
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
       - else
