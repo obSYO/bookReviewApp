@@ -31,10 +31,11 @@
               = link_to "#{review.book.booktitle}", "/books/#{review.book_id}"
             .user__page__reviews__reviewTitle
               = review.title
-            - if review.user_id == current_user.id
-              .user__page__reviews__delete
-                = link_to "削除", "/books/#{review.book_id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
-            - else
+            - if user_signed_in?
+              - if review.user_id == current_user.id
+                .user__page__reviews__delete
+                  = link_to "削除", "/books/#{review.book_id}/reviews/#{review.id}", method: :delete, class: "reviewPostEdit__delete"
+              - else
             .user__page__reviews__reviewText
               = review.reviewText
       - else
