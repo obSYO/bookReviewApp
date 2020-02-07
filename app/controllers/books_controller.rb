@@ -60,10 +60,6 @@ class BooksController < ApplicationController
   def search
     @search_books = Book.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(3)
     if @search_books.present?
-      @reviews = Review.all
-      @reviews = @review.includes(:book)
-      @user_reviews = current_user.reviews.order("created_at DESC") if current_user.present?  
-      @search_reviews = @reviews.search(params[:keyword])
     else
       @nosuch_books = "#{params[:keyword]}に一致する本は登録されていません"
     end
