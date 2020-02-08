@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.order("created_at DESC").page(params[:page]).per(3)
-    @review = Review.all
+    @review = Review.all.order("created_at DESC")
     @reviews = @review.includes(:book)
     @user_reviews = current_user.reviews.order("created_at DESC") if current_user.present?
   end

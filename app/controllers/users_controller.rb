@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @reviews = @user.reviews
-    @user_books = @user.books
+    @reviews = @user.reviews.order("created_at DESC")
+    @user_books = @user.books.order("created_at DESC")
   end
 
   private
